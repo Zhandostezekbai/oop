@@ -1,1 +1,1 @@
-print("test")
+print("BEKZHAN SALEM")
