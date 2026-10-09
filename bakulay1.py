@@ -1,5 +1,6 @@
 class Transport():
     def __init__(self,name,capacity):
+    
     self._name=name
     self._capacity
 
