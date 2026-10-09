@@ -23,7 +23,7 @@ class Novel(Book):
 	print("Роман окылады")
 
         def describe(self):
-	print("")
+	print("Роман окытылып жатыр")
 	self.read()
 	
 class Textbook(Book):
@@ -50,6 +50,7 @@ class Comicbook(Book):
 	print("Комикстын кытаптары суреттермен баяндалады")
  	self.ilistrate()
 
+
 Novl=Novel("djadjjda","Bekzhan")
 TxtBook=Textbook("Physics","Almaty kitap")
 Comics=Comicbook("Avengers","Marvel")
@@ -57,6 +58,4 @@ Comics=Comicbook("Avengers","Marvel")
 
 for book in decribe():
 	book.describe()
-  
-
-	
+  print("-------")
