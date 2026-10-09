@@ -1,37 +1,59 @@
-class Container:
-	def __init__(self,name,capacity,material):
-		self._name=name
-		self.__capacity=capacity
-		self.material=material
+class Computer:
+	def __init__(self, model, year):
+		self._model = model
+		self._year = year
+
+	def get_model(self):
+		return self._model
+	
+	def set_model(self, new_model):
+		self._model = new_model
+	
+	def get_year(self):
+		return self._year
+	
+	def set_year(self, new_year):
+		self._year= new_year
+
+class Desktop(Computer):
+	def __init__(self, model, year):
+		super().__init__(model,year)
+	
+	def start(self):
+		print("Үстел компьютері іске қосылады")
+
+	def work(self):
+		print("Wordta jumys jasap jatyr")
+
 	
 
-def get_price(self):
-  return self._price
+class GamingPC(Computer):
+	def __init__(self, model, year):
+		super().__init__(model,year)
+	
+	def play_game(self):
+		print("Ойын компьютері ойынды іске қосады")
 
-def set_price(self,price)
- self.price=price
-def get_capacity(self):
- return self._capacity
-def set_capacity(self,capacity)
- self._capacity=capacity
+	def work(self):
+		print("Oiyn oinap otyr")
 
-def get_material(self):
-  return self.material=material
-def set_material(self,material)
-  self.material=material
 
-Class Box(Container):
-def pack(self):
-  print("Қорапқа заттар салынады")
-def use(self)
-  print("f{Қорапқа заттар салынды}")
-Class Bottle(Container):
-def fill(self):
- print("Бөтелке толтырылады")
-def use(self):
- print("f{Бөтелкеге су толтырылды}")
-Class Backpack(Container):
-def carry(self):
-  print("Рюкзак тасымалданады")
-def use():
-print("f{Рюкзак тасымалданды}")
+class Server(Computer):
+	def __init__(self, model, year):
+		super().__init__(model,year)
+	
+	def process_data(self):
+		print("Сервер деректерді өңдейді")
+
+	def work(self):
+		print("Server qabyldap jatyr")
+
+desktop=Desktop(" hp ", " 2016 ")
+gamingpc=GamingPC(" Acer ", " 2024 ")
+server=Server(" Eraly ", " 2020 ")
+
+devices=[desktop, gamingpc, server]
+
+for device in devices:
+	device.work()
+
