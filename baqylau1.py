@@ -40,7 +40,7 @@ class GamingPC(Computer):
 
 class Server(Computer):
 	def __init__(self, model, year):
-		super().__init__(model,year)
+		super().__init__(model , year)
 	
 	def process_data(self):
 		print("Сервер деректерді өңдейді")

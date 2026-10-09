@@ -5,9 +5,9 @@ class Student:
         self.__student_id=student_id
 
     def get_name(self):
-        return self.get_name
+        return self.name
 
-    def set_name(self,new_name):
+    def set_name(self,new_name) :
         self.name=new_name
 
     def add_grade(self,points):
@@ -15,7 +15,7 @@ class Student:
 
 Eraly=Student("Eraly",8,"432ff1")
 
-print(Eraly.set_name("Eraly"))
+Eraly.set_name("Ali")
 print("New name is:",Eraly.get_name())
 
 print("Bastapqy bagasy:",Eraly._grade)
