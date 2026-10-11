@@ -27,6 +27,7 @@ class WashingMachine(Appliance):
 
     def operate(self):
         print("Кір жуғыш машина істеп тұр:")
+        self.wash()
 
 
 class Refrigerator(Appliance):
@@ -39,6 +40,7 @@ class Refrigerator(Appliance):
 
     def operate(self):
         print("Тоназытқыш салқындатып тұр")
+        self.cool()
 
 
 class Microwave(Appliance):
@@ -51,6 +53,7 @@ class Microwave(Appliance):
 
     def operate(self):
         print("Микротолқынды пеш тағамды қыздырып тұр")
+        self.heat()
 
 
 kirmachine = WashingMachine("LG", 2000)
@@ -58,6 +61,18 @@ refri = Refrigerator("Samsung", 150)
 micro = Microwave("Bosch", 350)
 
 appliances = [kirmachine, refri, micro]
+
+kirmachine.wash()
+kirmachine.operate()
+print("-------------------")
+
+refri.cool()
+refri.operate()
+print("-------------------")
+
+micro.heat()
+micro.operate()
+print("-------------------")
 
 for obj in appliances:
     obj.operate()
