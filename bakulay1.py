@@ -1,78 +1,81 @@
-class Appliance:
+class Sensor:
+    def _init_(self, sensor_type):
+        self.sensor_type = sensor_type 
 
-    def __init__(self, brand, power):
-        self._brand = brand
-        self._power = power
-
-    def get_brand(self):
-        return self._brand
-
-    def set_brand(self, brand):
-        self._brand = brand
-
-    def get_power(self):
-        return self._power
-
-    def set_power(self, power):
-        self._power = power
+    def read_data(self):
+        return f"Сенсор ({self.sensor_type}) деректерді оқып жатыр..."
 
 
-class WashingMachine(Appliance):
+class Robot:
+    def _init_(self, sensor_type: str):
+        self.sensor = Sensor(sensor_type)
 
-    def __init__(self, brand, power):
-        super().__init__(brand, power)
-
-    def wash(self):
-        print("Кір жуғыш машина жуады")
-
-    def operate(self):
-        print("Кір жуғыш машина істеп тұр:")
-        self.wash()
+    def execute_task(self):
+        print("Робот тапсырманы орындауда.")
+        print(self.sensor.read_data())
 
 
-class Refrigerator(Appliance):
+class Service:
+    def _init_(self, name,price):
+        self.__price=price
+        self._name=name
 
-    def __init__(self, brand, power):
-        super().__init__(brand, power)
+    def get_price(self):
+        return self.__price
 
-    def cool(self):
-        print("Тоназытқыш салқындатады")
+    def set_price(self,price):
+        self.__price = price
 
-    def operate(self):
-        print("Тоназытқыш салқындатып тұр")
-        self.cool()
+    def display_info(self):
+        print(f"Қызмет атауы: {self._name}, Бағасы: {self.get_price()}")
 
+    def provide_service(self):
+        print("Қызмет көрсетілуде...")
 
-class Microwave(Appliance):
-
-    def __init__(self, brand, power):
-        super().__init__(brand, power)
-
-    def heat(self):
-        print("Микротолқынды пеш тағамды қыздырады")
-
-    def operate(self):
-        print("Микротолқынды пеш тағамды қыздырып тұр")
-        self.heat()
+    def calculate_cost(self):
+        return self.get_price()
 
 
-kirmachine = WashingMachine("LG", 2000)
-refri = Refrigerator("Samsung", 150)
-micro = Microwave("Bosch", 350)
+class Delivery(Service):
+    def _init_(self, name,price):
+        super()._init_(name, price)
 
-appliances = [kirmachine, refri, micro]
+    def calculate_cost(self):
+        
+        
+        return self.get_price() * 5
 
-kirmachine.wash()
-kirmachine.operate()
-print("-------------------")
+    def provide_service(self):
+        print(f"Жеткізу қызметі орындалуда. Бағасы: {self.calculate_cost()}")
 
-refri.cool()
-refri.operate()
-print("-------------------")
 
-micro.heat()
-micro.operate()
-print("-------------------")
+class Installation(Service):
+    def _init_(self, name, price):
+        super()._init_(name, price)
 
-for obj in appliances:
-    obj.operate()
+    def calculate_cost(self):
+        return self.get_price() / 2
+
+    def provide_service(self):
+        print(f"Орнату қызметі орындалуда. Бағасы: {self.calculate_cost()}")
+
+
+class CombinedService(Delivery, Installation):
+    def _init_(self, name: str, price: float):
+           super()._init_(name, price)
+
+    def provide_service(self):
+        print("Біріктірілген қызмет (CombinedService) іске қосылды.")
+
+
+if _name_ == "_main_":
+    print("--- 1-тапсырма нәтижесі ---")
+    robot = Robot("Оптический / Лидар")
+    robot.execute_task()
+
+    print("\n--- 2-тапсырма нәтижесі ---")
+    combined = CombinedService("Кешенді қызмет", 1000)
+    combined.display_info()
+    
+    print("\n[Installation класының әдісін нақты шақыру]:")
+    Installation.provide_service(combined)
